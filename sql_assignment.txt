@@ -1,0 +1,714 @@
+CREATE DATABASE PACKAGE
+CREATE TABLE pack_grades(
+grade_id		int		not null  primary key,
+grade_name		varchar(50)	not null,
+min_price		int		not null,
+max_price		int		not null 
+)
+CREATE TABLE packages(
+pack_id		int		not null  primary key,
+speed		varchar(20)	not null,
+strt_date	date	not null,
+monthly_pay	int		not null,
+sector_id	int		not null references sectors(sector_id)
+)
+ 
+CREATE TABLE sectors(
+sector_id		int		not null  primary key,
+sector_name		varchar(50)	not null	
+)
+
+CREATE TABLE customers(
+customer_id		int		not null	 primary key,
+first_name		varchar(50)	not null,
+last_name		varchar(50)	null,
+birth_date		date	not null,
+join_date		date	not null,
+city			varchar(50)	not null,
+	
+State1			varchar(50)	not null,
+Street			varchar(20) not null,
+main_phn_no		varchar(50)		not null,
+sec_phn_no		varchar(50)null,
+fax				varchar(50)	 null,
+monthly_disc	decimal		null,
+pack_id			int		references packages(pack_id)	
+)
+
+INSERT customers VALUES(1,'Alvin','Smith','1962-06-27',CAST(0x812D0B00 AS
+Date),'NewYork','NewYork','5953HollisterAvenue','567.867.3945','936.228.9436','762.788
+.3400',CAST(28.00 AS Decimal(4,2)),18)
+INSERT customers VALUES(2,'Jose','Jones','1968-01-17',CAST(0x12300B00 AS
+Date),'LosAngeles','California','4081HollisterAvenue','520.336.8373','939.115.6982','7
+11.883.3345',CAST(12.00 AS Decimal(4,2)),31)
+INSERT customers VALUES(3,'Amado','Taylor','1965-08-17',CAST(0x802C0B00 AS
+Date),'Chicago','Illinois','3402BroderickStreet','522.501.6331','976.113.3737','767.94
+4.7131',NULL,7)
+INSERT customers VALUES(4,'Stuart','Williams','1983-05-01',CAST(0xF32E0B00 AS
+Date),'Houston','Texas','5543JenningsStreet','530.339.4737','963.891.4185','756.186.36
+34',CAST(17.00 AS Decimal(4,2)),23)
+INSERT customers VALUES(5,'Demarcus','Brown','1971-12-02',CAST(0xD62C0B00 AS
+Date),'Philadelphia','Pennsylvania','5321LagunaStreet','580.733.2184',NULL,'760.663.20
+46',CAST(11.00 AS Decimal(4,2)),13)
+INSERT customers VALUES(6,'Mark','Davies','1970-09-01',CAST(0xAB310B00 AS
+Date),'Phoenix','Arizona','5868CameronWay','557.701.1366','919.345.5511',NULL,CAST(18.00 AS Decimal(4,2)),39)
+INSERT customers VALUES(7,'Merlin','Evans','1962-04-13',CAST(0xD52B0B00 AS
+Date),'SanAntonio','Texas','8177BrannanStreet','542.753.9215','992.959.8999',NULL,CAST
+(23.00 AS Decimal(4,2)),1)
+INSERT customers VALUES(8,'Elroy','Wilson','1963-01-28',CAST(0x19330B00 AS
+Date),'SanDiego','California','1873KeyAvenue','544.172.1347','985.345.8501',NULL,CAST(
+6.00 AS Decimal(4,2)),42)
+INSERT customers VALUES(9,'Charles','Thomas','1960-05-13',CAST(0x44320B00 AS
+Date),'SanJose','California','9164ValenciaStreet','515.656.3047',NULL,'799.101.7626',CAST(29.00 AS Decimal(4,2)),37)
+INSERT customers VALUES(10,'Rudolph','Roberts','1973-11-05',CAST(0x412C0B00 AS
+Date),'Jacksonville','Florida','6308GilbertStreet','549.569.1762','942.671.2496','729.
+973.1742',CAST(7.00 AS Decimal(4,2)),7)
+INSERT customers VALUES(11,'Laurence','Johnson','1975-11-25',CAST(0xC62F0B00 AS
+Date),'Indianapolis','Indiana','7529McLarenAvenue','527.138.3311','916.219.9787',NULL,
+CAST(9.00 AS Decimal(4,2)),34)
+INSERT customers VALUES(12,'Pasquale','Lewis','1969-05-24',CAST(0x162F0B00 AS
+Date),'Austin','Texas','1569ClevelandStreet','566.849.6722','983.706.4341',NULL,NULL,27)
+INSERT customers VALUES(13,'Pat','Walker','1985-07-02',CAST(0x8D300B00 AS
+Date),'SanFrancisco','California','4687SloatBoulevard','582.885.8362','938.219.8802',NULL,NULL,31)
+INSERT customers VALUES(14,'Harland','Robinson','1974-04-17',CAST(0xFD2F0B00 AS
+Date),'Columbus','Ohio','5390MontgomeryStreet','520.519.1795','944.392.2529','721.443.
+8826',CAST(30.00 AS Decimal(4,2)),31)
+INSERT customers VALUES(15,'Herschel','Wood','1974-07-24',CAST(0xE9320B00 AS
+Date),'FortWorth','Texas','7842CorbettAvenue','588.826.5279','997.263.1636','779.791.4
+617',CAST(30.00 AS Decimal(4,2)),41)
+INSERT customers VALUES(16,'Galen','Thompson','1964-12-08',CAST(0x902B0B00 AS
+Date),'Charlotte','NorthCarolina','5466FarragutAvenue','599.783.7133',NULL,'753.251.64
+33',CAST(16.00 AS Decimal(4,2)),1)
+INSERT customers VALUES(17,'Brain','White','1978-02-13',CAST(0x1F300B00 AS
+Date),'Detroit','Michigan','3728IngersonStreet','561.654.2679','957.711.4041','794.811
+.7354',NULL,34)
+INSERT customers VALUES(18,'Marcel','Watson','1978-10-12',CAST(0x452E0B00 AS
+Date),'ElPaso','Texas','9157LeidesdorffStreet','567.827.2421','937.806.4116','723.277.
+6166',CAST(28.00 AS Decimal(4,2)),23)
+
+INSERT customers VALUES(19,'Lino','Jackson','1982-06-25',CAST(0x2E2E0B00 AS
+Date),'Memphis','Tennessee','4542McKinnonAvenue','557.460.8507','984.433.8202','792.90
+8.7024',CAST(6.00 AS Decimal(4,2)),27)
+INSERT customers VALUES(20,'Riley','Wright','1970-02-18',CAST(0x2B2B0B00 AS
+Date),'Boston','Massachusetts','4848VallejoStreet','541.661.3366','931.368.3046','737.
+625.7424',CAST(21.00 AS Decimal(4,2)),1)
+INSERT packages VALUES(1,'750Kbps',CAST(0x5C2C0B00 AS Date),79,1)
+INSERT packages VALUES(2,'750Kbps',CAST(0x8D2D0B00 AS Date),69,1)
+INSERT packages VALUES(3,'750Kbps',CAST(0x092E0B00 AS Date),59,1)
+INSERT packages VALUES(4,'750Kbps',CAST(0x05300B00 AS Date),49,1)
+INSERT packages VALUES(5,'750Kbps',CAST(0xF9310B00 AS Date),39,1)
+INSERT packages VALUES(6,'750Kbps',CAST(0x51320B00 AS Date),29,1)
+INSERT packages VALUES(7,'750Kbps',CAST(0xA42B0B00 AS Date),69,2)
+INSERT packages VALUES(8,'750Kbps',CAST(0x7D2D0B00 AS Date),59,2)
+INSERT packages VALUES(9,'750Kbps',CAST(0x342F0B00 AS Date),49,2)
+INSERT packages VALUES(10,'750Kbps',CAST(0x9C300B00 AS Date),39,2)
+INSERT packages VALUES(11,'750Kbps',CAST(0x29320B00 AS Date),29,2)
+INSERT packages VALUES(12,'750Kbps',CAST(0x2C330B00 AS Date),19,2)
+INSERT packages VALUES(13,'1.5Mbps',CAST(0xBD2C0B00 AS Date),89,1)
+INSERT packages VALUES(14,'1.5Mbps',CAST(0xB52E0B00 AS Date),79,1)
+INSERT packages VALUES(15,'1.5Mbps',CAST(0xA2300B00 AS Date),69,1)
+INSERT packages VALUES(16,'1.5Mbps',CAST(0x8F310B00 AS Date),59,1)
+INSERT packages VALUES(17,'1.5Mbps',CAST(0x76320B00 AS Date),49,1)
+INSERT packages VALUES(18,'1.5Mbps',CAST(0x3B2D0B00 AS Date),79,2)
+INSERT packages VALUES(19,'1.5Mbps',CAST(0x3C2E0B00 AS Date),69,2)
+INSERT packages VALUES(20,'1.5Mbps',CAST(0xA02F0B00 AS Date),59,2)
+INSERT packages VALUES(21,'1.5Mbps',CAST(0x4A310B00 AS Date),49,2)
+INSERT packages VALUES(22,'1.5Mbps',CAST(0x5F320B00 AS Date),39,2)
+INSERT packages VALUES(23,'2.5Mbps',CAST(0x0C2E0B00 AS Date),99,1)
+INSERT packages VALUES(24,'2.5Mbps',CAST(0xD82F0B00 AS Date),89,1)
+INSERT packages VALUES(25,'2.5Mbps',CAST(0xC6310B00 AS Date),79,1)
+INSERT packages VALUES(26,'2.5Mbps',CAST(0x09330B00 AS Date),69,1)
+INSERT packages VALUES(27,'2.5Mbps',CAST(0x8B2E0B00 AS Date),89,2)
+INSERT packages VALUES(28,'2.5Mbps',CAST(0x7C2F0B00 AS Date),79,2)
+INSERT packages VALUES(29,'2.5Mbps',CAST(0xEC300B00 AS Date),69,2)
+INSERT packages VALUES(30,'2.5Mbps',CAST(0x66320B00 AS Date),59,2)
+INSERT packages VALUES(31,'5Mbps',CAST(0x55300B00 AS Date),109,1)
+INSERT packages VALUES(32,'5Mbps',CAST(0xF6300B00 AS Date),99,1)
+INSERT packages VALUES(33,'5Mbps',CAST(0xDF320B00 AS Date),89,1)
+INSERT packages VALUES(34,'5Mbps',CAST(0xD1300B00 AS Date),99,2)
+INSERT packages VALUES(35,'5Mbps',CAST(0x24320B00 AS Date),89,2)
+INSERT packages VALUES(36,'5Mbps',CAST(0x5D330B00 AS Date),79,2)
+INSERT packages VALUES(37,'10Mbps',CAST(0xE8300B00 AS Date),119,1)
+INSERT packages VALUES(38,'10Mbps',CAST(0xAF320B00 AS Date),109,1)
+INSERT packages VALUES(39,'10Mbps',CAST(0x2A320B00 AS Date),109,2)
+INSERT packages VALUES(40,'10Mbps',CAST(0x5C320B00 AS Date),99,2)
+INSERT packages VALUES(41,'12Mbps',CAST(0xB2330B00 AS Date),129,1)
+INSERT packages VALUES(42,'12Mbps','2005-11-03',119,2)
+INSERT sectors VALUES(1,'Private')
+INSERT sectors VALUES(2,'Business')
+INSERT pack_grades VALUES (1, 'Very Low', 0, 10)
+INSERT pack_grades VALUES (2, 'Low', 11, 20)
+INSERT pack_grades VALUES (3, 'Medium', 21, 40)
+INSERT pack_grades VALUES (4, 'High', 41, 80)
+INSERT pack_grades VALUES (5, 'Very High', 81, 150)
+********************************************************
+
+--1
+SELECT * FROM CUSTOMERS
+
+--2.
+SELECT PACK_ID,SPEED,MONTHLY_PAY FROM PACKAGES
+
+--3.
+ SELECT CUSTOMER_ID,FIRST_NAME,LAST_NAME,main_phn_no AS PRIMARY_NUM,sec_phn_no,PACK_ID
+FROM CUSTOMERS
+
+--4.
+ SELECT FIRST_NAME,LAST_NAME,JOIN_DATE,MONTHLY_DISC,(MONTHLY_DISC+MONTHLY_DISC*0.20) AS MD_AFTER_ADDITION, (MONTHLY_DISC-MONTHLY_DISC*0.20) AS MD_AFTER_REDUCTION
+FROM CUSTOMERS
+
+--5.
+SELECT PACK_ID,SPEED,STRT_DATE,MONTHLY_PAY,monthly_pay*12 AS YEARLYPAYMENT
+FROM PACKAGES
+
+--6.
+SELECT  FIRST_NAME+'  '+LAST_NAME AS FULL_NAME,CONCAT(main_phn_no , ' , ',sec_phn_no) AS CONTACT_DETAILS
+FROM CUSTOMERS
+
+--7.
+SELECT DISTINCT CITY
+FROM CUSTOMERS
+
+--8.
+SELECT DISTINCT State1 
+FROM CUSTOMERS
+
+--11.
+SELECT DISTINCT CITY,State1
+FROM CUSTOMERS
+
+--12.
+SELECT CONCAT(LAST_NAME,'  ',State1) AS CUSTOMER_AND_STATE
+FROM CUSTOMERS
+
+--13.
+SELECT FIRST_NAME AS FN,LAST_NAME AS LN,MONTHLY_DISC AS DC,CONCAT(CITY,' ',STREET) AS FULL_ADDRESS
+FROM CUSTOMERS
+
+--14.
+SELECT DISTINCT MONTHLY_DISC
+FROM CUSTOMERS
+
+--15.
+SELECT DISTINCT PACK_ID
+FROM CUSTOMERS
+
+--16.
+SELECT FIRST_NAME,LAST_NAME,PACK_ID
+FROM CUSTOMERS
+WHERE LAST_NAME LIKE '%KING'
+
+--17.
+SELECT *
+FROM PACKAGES
+WHERE SPEED>5
+
+--18.
+SELECT FIRST_NAME,LAST_NAME,PACK_ID,MONTHLY_DISC
+FROM CUSTOMERS
+WHERE MONTHLY_DISC<30
+
+--19.
+SELECT *
+FROM CUSTOMERS
+WHERE JOIN_DATE<'2016-01-01'
+
+--20.
+SELECT CUSTOMER_ID,FIRST_NAME,State1,CITY,PACK_ID
+FROM CUSTOMERS
+WHERE PACK_ID IN (21,28,14)
+
+--21.
+SELECT CUSTOMER_ID,FIRST_NAME,State1,CITY,PACK_ID
+FROM CUSTOMERS
+WHERE PACK_ID NOT IN(27,10,3)
+
+--22.
+SELECT CUSTOMER_ID ,LAST_NAME,main_phn_no,MONTHLY_DISC,PACK_ID
+FROM CUSTOMERS
+WHERE CUSTOMER_ID NOT IN(703,314,560)
+
+--23.
+SELECT FIRST_NAME,MONTHLY_DISC
+FROM CUSTOMERS
+WHERE FIRST_NAME LIKE '%E'
+
+--24.
+SELECT LAST_NAME ,PACK_ID 
+FROM CUSTOMERS
+WHERE LAST_NAME LIKE '_D%'
+
+--25.
+SELECT *
+FROM CUSTOMERS
+WHERE LAST_NAME LIKE '%H%' OR LAST_NAME LIKE '%I' OR LAST_NAME LIKE 'J'
+ORDER  BY MONTHLY_DISC DESC
+
+--26.
+SELECT FIRST_NAME,LAST_NAME,JOIN_DATE,MONTHLY_DISC,PACK_ID
+FROM CUSTOMERS
+WHERE LAST_NAME  not LIKE '%a%'
+ORDER BY PACK_ID
+
+--27.
+SELECT * 
+FROM CUSTOMERS
+WHERE PACK_ID NOT LIKE 'NULL'
+
+--28.
+SELECT CONCAT(FIRST_NAME,' ',LAST_NAME) AS FULL_NAME,MONTHLY_DISC
+FROM CUSTOMERS
+WHERE MONTHLY_DISC NOT BETWEEN 20 AND 30
+ORDER BY FULL_NAME ASC
+
+--29.
+SELECT  CONCAT(FIRST_NAME,' ',LAST_NAME) AS FULL_NAME,CONCAT(main_phn_no,' ' ,STREET) AS CONTACTS,MONTHLY_DISC AS DC
+FROM CUSTOMERS
+WHERE MONTHLY_DISC BETWEEN 11 AND 27
+
+--30.
+SELECT * FROM CUSTOMERS
+WHERE 
+(CITY='NEWYORK' AND MONTHLY_DISC BETWEEN 30 AND 40)
+OR 
+(PACK_ID NOT IN(8,19,30) AND JOIN_DATE < '2007-01-01')
+
+
+--31
+SELECT LAST_NAME,PACK_ID,BIRTH_DATE
+FROM CUSTOMERS
+WHERE JOIN_DATE  BETWEEN '2007-12-12' AND '2010-04-17'
+
+--32.
+SELECT PACK_ID,STRT_DATE,SPEED 
+FROM PACKAGES
+WHERE STRT_DATE <'2007-01-01'
+
+--33.
+SELECT PACK_ID,STRT_DATE,SPEED,SECTOR_ID
+FROM PACKAGES
+WHERE SECTOR_ID=1
+
+--34
+SELECT	PACK_ID,SPEED,SECTOR_ID
+FROM PACKAGES
+WHERE SPEED  IN (15,10)
+
+
+--35.
+SELECT LAST_NAME,MONTHLY_DISC 
+FROM CUSTOMERS
+WHERE CITY='ORLANDO'
+
+--36.
+SELECT LAST_NAME ,PACK_ID 
+FROM CUSTOMERS
+WHERE PACK_ID IN(3,6) 
+
+--37.
+SELECT LAST_NAME ,PACK_ID 
+FROM CUSTOMERS
+WHERE PACK_ID=3 OR PACK_ID=6
+
+--38.
+SELECT FIRST_NAME,main_phn_no,sec_phn_no
+FROM CUSTOMERS
+WHERE sec_phn_no NOT LIKE 'NULL'
+
+--39.
+SELECT FIRST_NAME,MONTHLY_DISC,PACK_ID
+FROM CUSTOMERS
+WHERE PACK_ID NOT LIKE 'NULL'
+
+--40.
+SELECT CUSTOMER_ID,LOWER(FIRST_NAME),UPPER(LAST_NAME)
+FROM CUSTOMERS
+WHERE CUSTOMER_ID BETWEEN 80 AND 150
+
+--41.
+SELECT LAST_NAME,FIRST_NAME ,CONCAT(SUBSTRING(FIRST_NAME,1,1),SUBSTRING(LAST_NAME,1,3),'@MYMAIL.COM') AS EMAIL
+FROM CUSTOMERS
+
+--42.
+SELECT FIRST_NAME,LAST_NAME,main_phn_no,REPLACE(LEFT(main_phn_no,3),'515','$$$')+SUBSTRING(main_phn_no,4,12)AS 'NEW_PHONE_NUM'
+FROM CUSTOMERS
+WHERE main_phn_no LIKE '515%'
+
+
+--43.
+SELECT First_Name,monthly_disc,monthly_disc*0.197 DS,ROUND(monthly_disc*0.197,2) WHOLE_DS,FLOOR(monthly_disc*0.197),CEILING(monthly_disc*0.197)
+FROM customers
+
+--44.
+SELECT First_Name,join_date,DATEADD(DD,-10,JOIN_DATE) AS AFTER10,DATEADD(MM,1,JOIN_DATE) AS AFTERMONTH,DATEDIFF(DD,JOIN_DATE,GETDATE()) AS DIFF
+FROM customers
+
+--45.
+SELECT First_Name,Birth_date,DATEDIFF(YY,Birth_date,GETDATE()) AS AGE
+FROM customers
+WHERE DATEDIFF(YY,Birth_date,GETDATE())>50
+
+
+--46.
+SELECT First_Name,Birth_date
+FROM CUSTOMERS
+WHERE MONTH(BIRTH_DATE)=MONTH(GETDATE())
+AND
+DAY(Birth_date)=DAY(GETDATE())
+
+--47.
+SELECT First_Name,join_date,DATEDIFF(YY,JOIN_DATE,GETDATE()) AS '5YRS_OFJOINING'
+FROM customers
+WHERE DATEDIFF(YY,join_date,GETDATE())=5
+AND DAY(join_date)=DAY(GETDATE())
+AND MONTH(JOIN_DATE)=MONTH(GETDATE())
+
+--48.
+SELECT first_name +  ' / '  + CAST(DAY(join_date) AS VARCHAR) ,
+              last_name +  ' / '   + CAST(monthly_disc AS VARCHAR)
+FROM customers
+
+--49.
+SELECT  last_name,
+                UPPER(State1) + ' / ' + CONVERT(varchar , customer_id , 102) ,
+                CONVERT(varchar , birth_date , 103) + ' / ' + CONVERT(varchar , join_date ,  103)
+FROM customers
+WHERE SUBSTRING(last_name , 1 , 1) IN ('D' , 'K')
+
+--50.
+SELECT  first_name ,
+                last_name ,
+                ISNULL(main_phn_no , 'N / A'),
+                ISNULL(sec_phn_no, 'N / A'),
+                ISNULL(fax, 'N / A')
+FROM customers
+WHERE pack_id = 27 
+ 
+ SELECT  first_name ,
+                last_name ,
+                birth_date ,
+                ISNULL(main_phn_no , 'N / A'),
+                ISNULL(sec_phn_no, 'N / A'),
+                ISNULL(fax, 'N / A')
+FROM customers
+WHERE pack_id = 27
+AND
+              year(birth_date) = 1972
+
+
+--51.
+SELECT first_name , last_name , monthly_disc ,
+              CASE WHEN monthly_disc BETWEEN 0 AND 10 THEN 'A'
+                WHEN monthly_disc BETWEEN 11 AND 20 THEN 'B'
+                WHEN monthly_disc BETWEEN 21 AND 30 THEN 'C'
+                ELSE 'D'
+             END AS 'Grades'
+FROM customers
+
+--52.
+select min(last_name)
+from customers
+
+--53.
+select avg(monthly_pay) AVG
+from packages
+
+--54.
+select max (last_name)
+from customers
+
+--55.
+select count(pack_id) as No_OF_Packages
+from packages
+
+--56.
+select count(Customer_id) as Total_Records
+from customers
+
+--57.
+select count(distinct State1) as dis_states
+from customers
+
+--58.
+select count(distinct speed) as distinct_speed
+from packages
+
+--59..
+select count(fax) Count_FAx
+from customers
+where fax!='null'
+
+--60.
+select count(*) Count_FAx
+from customers
+where fax is NULL
+
+select max(monthly_disc) HIGHESt,min(monthly_disc) LOWEST,avg(monthly_disc) AVG
+from customers
+
+--61.
+select State1, count(distinct State1) 
+from customers
+group by  state1
+order by  State1
+
+--62.
+SELECT COUNT(state1),state1 FROM CUSTOMERS GROUP BY State1   
+ 
+--63.
+select speed,AVG(monthly_pay) as AVG
+from packages
+group by speed
+
+--64.
+select sector_id ,max(monthly_pay) max
+from packages
+group by sector_id
+
+--66a
+
+select pack_id,avg(monthly_disc) avg
+from customers
+group by pack_id
+
+select pack_id,avg(monthly_disc) avg
+from customers
+where pack_id in(22,13)
+group by pack_id
+
+--67.
+select speed,max(monthly_pay) max,min(monthly_pay) min,avg(monthly_pay) avg
+from packages
+group by speed
+
+--68.
+select pack_id,count(customer_id) as count
+from customers
+group by pack_id
+
+select pack_id,count(customer_id) as count
+from customers
+where monthly_disc>20 
+group by pack_id
+
+--69
+select State1,city,COUNT(customer_id) as no_of_customer
+from customers
+group by State1, city
+
+--70.
+select city,AVG(monthly_disc)
+from customers 
+group by city
+
+select city,AVG(monthly_disc)
+from customers 
+where monthly_disc>20
+group by city
+
+
+--71. 
+
+a) select min(monthly_disc) as min_monthly_discount, State1 
+from customers 
+group by State1;
+
+b)select min(monthly_disc) as min_monthly_discount, State1 
+from customers where(monthly_disc > 10)
+group by State1;
+
+
+
+--72.
+select count(speed), speed  from packages 
+group by speed having count(speed)>  8;
+
+--73. 
+
+a) select first_name, last_name, packages.pack_id, speed from customers,packages;
+
+SELECT customers.pack_id
+FROM packages
+INNER JOIN customers ON packages.pack_id = customers.pack_id;
+
+b)select first_name, last_name, packages.pack_id, speed  
+from customers,packages 
+where (packages.pack_id =22 OR packages.pack_id=27)
+
+SELECT customers.pack_id
+FROM packages
+INNER JOIN customers ON packages.pack_id = customers.pack_id;
+
+
+--74.
+a) select pack_id, monthly_pay, speed, sector_name  
+from sectors,packages
+--where sectors.pack_=packages.pack_id;
+
+b) 
+SELECT customers.first_name,packages.pack_id,packages.speed,packages.monthly_pay,sectors.sector_name
+FROM customers 
+INNER JOIN 
+(packages INNER JOIN sectors
+ON sectors.sector_id=packages.pack_id) 
+ON customers.customer_id=packages.pack_id
+
+c)
+SELECT customers.first_name,packages.pack_id,packages.speed,packages.monthly_pay,sectors.sector_name
+FROM customers 
+INNER JOIN 
+(packages INNER JOIN sectors
+ON sectors.sector_id=packages.pack_id) 
+ON customers.customer_id=packages.pack_id
+where sectors.sector_name='Business';
+
+
+--75. 
+
+SELECT customers.first_name,customers.last_name,customers.join_date,packages.pack_id,packages.speed,packages.monthly_payment,sectors.sector_name
+FROM customers 
+INNER JOIN 
+(packages INNER JOIN sectors
+ON sectors.sector_id=packages.pack_id) 
+ON customers.customer_id=packages.pack_id
+where customers.join_date='2006' and sectors.sector_name='Private';
+
+
+--76
+select p.pack_id,p.speed,p.monthly_pay,pg.grade_id
+from packages p 
+JOIN pack_grades pg
+on  p.pack_id = pg.grade_id
+
+
+--77
+select concat(c.First_Name,' ',c.Last_Name),p.pack_id,p.speed,p.monthly_pay
+from customers c 
+inner join packages p
+on (c.pack_id=p.pack_id)
+
+
+
+--78
+select c.First_Name,c.Last_Name,c.pack_id
+from customers c 
+join customers c1
+on (c.pack_id=c1.pack_id)
+where c1.Last_Name = 'Taylor' AND c1.First_Name = 'Amado'
+
+
+--79
+select c.First_Name,c.Last_Name,c.pack_id,c1.monthly_disc
+from customers c 
+join customers c1
+on (c.pack_id=c1.pack_id)
+where  c1.Customer_id = 103
+       AND c.monthly_disc < c1.monthly_disc
+
+--or--
+
+select First_Name , Last_Name ,pack_id,monthly_disc
+from customers
+where monthly_disc < (select monthly_disc from customers where customer_id = 170)
+
+
+--80
+select speed,pack_id from
+ packages where speed=(select speed from packages
+ where pack_id=10)
+ --81
+ select first_name,last_name,city,State1 from customers
+ where State1=(select State1 from customers 
+ where customer_id=17)
+ --82
+select pack_id,speed,sector_id from packages
+where sector_id=(select sector_id from packages 
+where pack_id=10)
+--83
+select first_name,last_name,join_date from customers
+where join_date >(select join_date from customers 
+where customer_id =5)
+--84
+
+SELECT first_name , last_name , join_date
+FROM customers
+WHERE year(join_date) = (SELECT year(join_date) FROM customers WHERE customer_id = 3)
+AND
+month(join_date) = (SELECT month(join_date) FROM customers WHERE customer_id = 3)
+ 
+-- 85
+SELECT first_name , last_name , city , State1, pack_id
+FROM customers
+WHERE pack_id IN (SELECT pack_id FROM packages WHERE speed = '5Mbps')
+ 
+-- 86
+SELECT pack_id , speed , strt_date
+FROM packages
+WHERE year(strt_date) = (SELECT year(strt_date) FROM packages WHERE pack_id = 7)
+ 
+-- 87
+SELECT first_name , monthly_disc , pack_id , main_phn_no ,
+                    sec_phn_no
+FROM customers
+WHERE pack_id IN
+        (SELECT pack_id
+            FROM packages
+            WHERE sector_id IN
+                    (   SELECT sector_id
+                        FROM sectors
+                        WHERE sector_name = 'Business'))
+ 
+-- 88
+SELECT first_name , monthly_disc, pack_id
+FROM customers
+WHERE pack_id IN
+                 (SELECT  pack_id
+                  FROM packages
+                  WHERE monthly_pay >
+                             (SELECT AVG(monthly_pay)
+                              FROM packages))
+ 
+-- 89
+SELECT customer_id , first_name , city , State1 ,birth_date , monthly_disc
+FROM customers
+WHERE birth_date =
+             (SELECT birth_date FROM customers WHERE customer_id = 10)
+              AND
+              monthly_disc >
+                 (SELECT monthly_disc FROM customers WHERE customer_id = 10)
+ 
+-- 90
+SELECT *
+FROM packages
+WHERE speed =
+         (SELECT speed FROM packages WHERE pack_id = 30)
+AND
+             monthly_pay >
+             (SELECT monthly_pay FROM packages WHERE pack_id = 7)
+ 
+-- 91
+SELECT pack_id ,speed , monthly_pay
+FROM packages
+WHERE monthly_pay
+        > ALL(SELECT monthly_pay FROM packages WHERE speed = '5Mbps')
+ 
+-- 92
+SELECT pack_id ,speed , monthly_pay
+FROM packages
+WHERE monthly_pay >
+         ANY (SELECT monthly_pay FROM packages WHERE speed = '5Mbps')
+ 
+-- 93
+SELECT pack_id ,speed , monthly_pay
+FROM packages
+WHERE monthly_pay
+         < ANY (SELECT monthly_pay FROM packages WHERE speed = '5Mbps')
+ 
+-- 94
+SELECT first_name ,monthly_disc , pack_id
+FROM customers
+WHERE monthly_disc <
+        (SELECT AVG(monthly_disc) FROM customers)
+AND
+             pack_id IN
+             (SELECT pack_id FROM customers WHERE first_name = 'Kevin')
